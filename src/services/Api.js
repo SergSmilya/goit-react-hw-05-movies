@@ -22,7 +22,7 @@ export async function apiMov(movId) {
 export async function apiMovItem(movName) {
   try {
     return await axios(
-      `${URL}/discover/movie/?api_key=${API_KEY}&without_keywords=${movName}`
+      `${URL}/search/movie/?api_key=${API_KEY}&query=${movName}`
     );
   } catch (error) {
     return error;
