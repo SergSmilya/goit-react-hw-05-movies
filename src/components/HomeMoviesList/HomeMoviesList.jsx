@@ -1,6 +1,6 @@
 import HomeMovieItem from 'components/HomeMovieItem/HomeMovieItem';
 import { useEffect, useState } from 'react';
-import Api from 'services/Api';
+import { Api } from 'services/Api';
 
 export default function HomeMoviesList() {
   const [movies, setMovies] = useState([]);
@@ -22,7 +22,9 @@ export default function HomeMoviesList() {
       <h2>Trending today</h2>
       <ul>
         {movies.map(({ id, original_title }) => (
-          <HomeMovieItem key={id}>{original_title}</HomeMovieItem>
+          <HomeMovieItem key={id} id={id}>
+            {original_title}
+          </HomeMovieItem>
         ))}
       </ul>
     </>

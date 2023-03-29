@@ -1,24 +1,36 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, NavLink } from 'react-router-dom';
 import Home from 'pages/Home';
 import Movies from 'pages/Movies';
-import NotFound from 'pages/NotFound';
+import Movie from './Movie/Movie';
 
 export const App = () => {
   return (
     <div
       style={{
         height: '100%',
-        display: 'flex',
+        display: 'block',
         justifyContent: 'center',
         alignItems: 'center',
         fontSize: 20,
         color: '#010101',
       }}
     >
+      <nav>
+        <ul>
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/movies">Movies</NavLink>
+          </li>
+        </ul>
+      </nav>
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="/movies/:movId" element={<Movie />} />
+        <Route path="*" element={<Home />} />
       </Routes>
     </div>
   );
@@ -29,7 +41,7 @@ export const App = () => {
 // Маршрути
 // У застосунку повинні бути такі маршрути. Якщо користувач зайшов за неіснуючим маршрутом, його необхідно перенаправляти на домашню сторінку.
 
-// '/' – компонент Home, домашня сторінка зі списком популярних кінофільмів.
+// * '/' – компонент Home, домашня сторінка зі списком популярних кінофільмів.
 // '/movies' – компонент Movies, сторінка пошуку кінофільмів за ключовим словом.
 // '/movies/:movieId' – компонент MovieDetails, сторінка з детальною інформацією про кінофільм.
 // /movies/:movieId/cast – компонент Cast, інформація про акторський склад. Рендериться на сторінці MovieDetails.
@@ -60,3 +72,5 @@ export const App = () => {
 // vote_count: 5999;
 
 // В место <p></p> должен біть <Link to...>
+
+// Стилізація активноі сторінки

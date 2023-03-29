@@ -1,7 +1,9 @@
-export default function HomeMovieItem({ children }) {
+import { Link } from 'react-router-dom';
+
+export default function HomeMovieItem({ children, id }) {
   return (
     <li>
-      <p>{children}</p>
+      <Link to={`/movies/${id}`}>{children}</Link>
     </li>
   );
 }
