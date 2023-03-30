@@ -1,6 +1,6 @@
 import InputSearch from 'components/InputSearch/InputSearch';
-import Item from 'components/Item/Item';
 import List from 'components/List/List';
+import MovieItemForId from 'components/MovieItemForId/MovieItemForId';
 import { useEffect, useState } from 'react';
 import { apiMovItem } from 'services/Api';
 
@@ -26,9 +26,9 @@ export default function Movies() {
       {searchFilmArr.length > 0 && (
         <List>
           {searchFilmArr.map(({ id, original_title }) => (
-            <Item key={id} id={id}>
+            <MovieItemForId key={id} id={id}>
               {original_title}
-            </Item>
+            </MovieItemForId>
           ))}
         </List>
       )}

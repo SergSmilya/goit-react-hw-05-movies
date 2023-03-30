@@ -28,3 +28,19 @@ export async function apiMovItem(movName) {
     return error;
   }
 }
+
+export async function apiMovReviews(movId) {
+  try {
+    return await axios(`${URL}/movie/${movId}/reviews?api_key=${API_KEY}`);
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function apiMovCast(movId) {
+  try {
+    return await axios(`${URL}/movie/${movId}/credits?api_key=${API_KEY}`);
+  } catch (error) {
+    return error;
+  }
+}

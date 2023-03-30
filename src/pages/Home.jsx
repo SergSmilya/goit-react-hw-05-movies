@@ -1,9 +1,9 @@
-import HomeMoviesList from 'components/HomeMoviesList/HomeMoviesList';
+import TrendingMovies from 'components/TrendingMovies/TrendingMovies';
 
 export default function Home() {
   return (
     <div>
-      <HomeMoviesList />
+      <TrendingMovies />
     </div>
   );
 }

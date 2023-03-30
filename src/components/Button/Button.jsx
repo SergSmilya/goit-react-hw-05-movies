@@ -1,7 +1,14 @@
 import PropTypes from 'prop-types';
 
 export default function Button({ children, type }) {
-  return <button type={type}>{children}</button>;
+  function handleClick(e) {
+    console.log(e);
+  }
+  return (
+    <button type={type} onClick={handleClick}>
+      {children}
+    </button>
+  );
 }
 
 Button.propTypes = {

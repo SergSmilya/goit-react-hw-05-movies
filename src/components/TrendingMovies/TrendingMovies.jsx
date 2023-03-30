@@ -1,8 +1,9 @@
-import HomeMovieItem from 'components/HomeMovieItem/HomeMovieItem';
 import { useEffect, useState } from 'react';
 import { Api } from 'services/Api';
+import List from 'components/List/List';
+import MovieItemForId from 'components/MovieItemForId/MovieItemForId';
 
-export default function HomeMoviesList() {
+export default function TrendingMovies() {
   const [movies, setMovies] = useState([]);
   //   const [error, setError] = useState(null);
   // const [isLoading, setIsLoading] = useState(false)
@@ -20,13 +21,14 @@ export default function HomeMoviesList() {
   return (
     <>
       <h2>Trending today</h2>
-      <ul>
+
+      <List>
         {movies.map(({ id, original_title }) => (
-          <HomeMovieItem key={id} id={id}>
+          <MovieItemForId key={id} id={id}>
             {original_title}
-          </HomeMovieItem>
+          </MovieItemForId>
         ))}
-      </ul>
+      </List>
     </>
   );
 }
