@@ -1,4 +1,5 @@
 import Button from 'components/Button/Button';
+import List from 'components/List/List';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { apiMov } from 'services/Api';
@@ -28,13 +29,13 @@ export default function Movie() {
           <h2>{original_title}</h2>
           <p>{overview}</p>
 
-          <ul>
+          <List>
             {genres.map(({ id, name }) => (
-              <li key={id}>
+              <li key={id} id={id}>
                 <p>{name}</p>
               </li>
             ))}
-          </ul>
+          </List>
         </div>
       )}
     </div>

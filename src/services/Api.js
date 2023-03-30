@@ -22,11 +22,9 @@ export async function apiMov(movId) {
 export async function apiMovItem(movName) {
   try {
     return await axios(
-      `${URL}/search/movie/?api_key=${API_KEY}&query=${movName}`
+      `${URL}/search/movie?api_key=${API_KEY}&query=${movName}`
     );
   } catch (error) {
     return error;
   }
 }
-
-// Спробувати модифікувати Api під різні запити

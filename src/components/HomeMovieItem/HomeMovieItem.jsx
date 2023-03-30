@@ -7,5 +7,3 @@ export default function HomeMovieItem({ children, id }) {
     </li>
   );
 }
-
-// В место <p></p> должен біть <Link to...>
