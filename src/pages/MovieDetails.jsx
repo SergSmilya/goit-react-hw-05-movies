@@ -5,14 +5,21 @@ import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { apiMov } from 'services/Api';
 
 export default function Movie() {
-  const URL_IMG = 'https://image.tmdb.org/t/p/w500';
+  const URL_IMG = 'https://image.tmdb.org/t/p/w200';
   const location = useLocation();
   const backLocation = useRef(location.state?.from ?? '/');
 
   const { movId } = useParams();
   const [movie, setMovie] = useState({});
 
-  const { original_title, overview, genres, backdrop_path } = movie;
+  const {
+    original_title,
+    overview,
+    genres,
+    poster_path,
+    release_date,
+    vote_average,
+  } = movie;
 
   useEffect(() => {
     apiMov(movId)
@@ -28,10 +35,22 @@ export default function Movie() {
       {/* Розбити на компоненти */}
       {movie.genres && (
         <div>
-          <img src={`${URL_IMG}${backdrop_path}`} alt={original_title}></img>
-          <h2>{original_title}</h2>
+          <img src={`${URL_IMG}${poster_path}`} alt={original_title}></img>
+          <h2>
+            {original_title}(<span>{new Date(release_date).getFullYear()}</span>
+            )
+          </h2>
+
+          <p>
+            User Score
+            {/* Зробити переклад у проценти */}
+            <span> {vote_average.toFixed(1)}%</span>
+          </p>
+
+          <p>Overview</p>
           <p>{overview}</p>
 
+          <p>Genres</p>
           <List>
             {genres.map(({ id, name }) => (
               <li key={id} id={id}>
