@@ -1,10 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from 'pages/Home';
-import Movies from 'pages/Movies';
-import MovieDetails from 'pages/MovieDetails';
+import { lazy } from 'react';
 import SharedLayout from './SharedLayout/SharedLayout';
 import Cast from './Cast/Cast';
 import Reviews from './Reviews/Reviews';
+
+const Home = lazy(() => import('../pages/Home'));
+const Movies = lazy(() => import('../pages/Movies'));
+const MovieDetails = lazy(() => import('../pages/MovieDetails'));
 
 export const App = () => {
   return (
@@ -33,10 +35,6 @@ export const App = () => {
   );
 };
 
-// Додай асинхронне завантаження JS-коду для маршрутів застосунку, використовуючи React.lazy() і Suspense.
-
-// handleClick прописана в комп. Button треба передати в цю функцію обєкт location...
-// Додати обробку помилок до компонентів
+// Використати useSearchParams в компоненті InputSearch
+// Додати обробку помилок до компонентів та спінери
 // Зробити окремі компоненти
-// Додати перевірки та спінери
-// Перевірити додаток

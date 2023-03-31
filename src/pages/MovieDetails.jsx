@@ -1,12 +1,13 @@
 import Additional from 'components/Additional/Additional';
-import Button from 'components/Button/Button';
 import List from 'components/List/List';
-import { useEffect, useState } from 'react';
-import { Outlet, useParams } from 'react-router-dom';
+import { Suspense, useEffect, useRef, useState } from 'react';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { apiMov } from 'services/Api';
 
 export default function Movie() {
   const URL_IMG = 'https://image.tmdb.org/t/p/w500';
+  const location = useLocation();
+  const backLocation = useRef(location.state?.from ?? '/');
 
   const { movId } = useParams();
   const [movie, setMovie] = useState({});
@@ -22,7 +23,7 @@ export default function Movie() {
 
   return (
     <div>
-      <Button type={'button'}>Go Back</Button>
+      <Link to={backLocation.current}>Go Back</Link>
 
       {/* Розбити на компоненти */}
       {movie.genres && (
@@ -42,7 +43,9 @@ export default function Movie() {
       )}
 
       <Additional>Additional information</Additional>
-      <Outlet />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 }

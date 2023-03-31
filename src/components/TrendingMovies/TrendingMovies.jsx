@@ -5,6 +5,7 @@ import MovieItemForId from 'components/MovieItemForId/MovieItemForId';
 
 export default function TrendingMovies() {
   const [movies, setMovies] = useState([]);
+
   //   const [error, setError] = useState(null);
   // const [isLoading, setIsLoading] = useState(false)
   // const [visible, setVisible] = useState(true)
