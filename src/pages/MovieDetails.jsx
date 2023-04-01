@@ -43,8 +43,7 @@ export default function Movie() {
 
           <p>
             User Score
-            {/* Зробити переклад у проценти */}
-            <span> {vote_average.toFixed(1)}%</span>
+            <span> {vote_average.toFixed(1) * 10}%</span>
           </p>
 
           <p>Overview</p>

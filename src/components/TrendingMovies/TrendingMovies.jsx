@@ -4,9 +4,8 @@ import List from 'components/List/List';
 import MovieItemForId from 'components/MovieItemForId/MovieItemForId';
 
 export default function TrendingMovies() {
-  const [movies, setMovies] = useState([]);
-
-  //   const [error, setError] = useState(null);
+  const [movies, setMovies] = useState(() => []);
+  // const [error, setError] = useState(null);
   // const [isLoading, setIsLoading] = useState(false)
   // const [visible, setVisible] = useState(true)
 
@@ -15,7 +14,7 @@ export default function TrendingMovies() {
       .then(({ data: { results } }) => {
         setMovies(results);
       })
-      .catch(console.log)
+      .catch(error => console.log(error.request))
       .finally();
   }, []);
 

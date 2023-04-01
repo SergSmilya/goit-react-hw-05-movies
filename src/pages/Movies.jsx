@@ -15,10 +15,12 @@ export default function Movies() {
 
   useEffect(() => {
     if (searchParams.get('query') === null) return;
-    apiMovItem(searchParams.get('query')).then(({ data: { results } }) =>
-      setSearchFilmArr(results)
-    );
+    apiMovItem(searchParams.get('query'))
+      .then(({ data: { results } }) => setSearchFilmArr(results))
+      .catch(error => console.log(error.request));
   }, [searchParams]);
+
+  console.log(searchFilmArr);
 
   return (
     <div>
@@ -32,6 +34,10 @@ export default function Movies() {
             </MovieItemForId>
           ))}
         </List>
+      )}
+
+      {searchFilmArr.length === 0 && (
+        <h2>{`Film with name: ${searchParams.get('query')} not found`}</h2>
       )}
     </div>
   );
