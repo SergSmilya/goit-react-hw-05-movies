@@ -2,6 +2,7 @@ import { apiMovCast } from 'services/Api';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import List from 'components/List/List';
+import { toast } from 'react-toastify';
 
 export default function Cast() {
   const URL_IMG = 'https://image.tmdb.org/t/p/w200';
@@ -9,7 +10,9 @@ export default function Cast() {
   const [casts, setCasts] = useState([]);
 
   useEffect(() => {
-    apiMovCast(movId).then(({ data: { cast } }) => setCasts(cast));
+    apiMovCast(movId)
+      .then(({ data: { cast } }) => setCasts(cast))
+      .catch(error => toast.error(`${error}!`));
   }, [movId]);
 
   return (

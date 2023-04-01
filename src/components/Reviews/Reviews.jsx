@@ -1,6 +1,7 @@
 import List from 'components/List/List';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { apiMovReviews } from 'services/Api';
 
 export default function Reviews() {
@@ -8,7 +9,9 @@ export default function Reviews() {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    apiMovReviews(movId).then(({ data: { results } }) => setReviews(results));
+    apiMovReviews(movId)
+      .then(({ data: { results } }) => setReviews(results))
+      .catch(error => toast.error(`${error}!`));
   }, [movId]);
 
   return (

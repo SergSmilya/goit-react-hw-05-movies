@@ -2,20 +2,17 @@ import { useEffect, useState } from 'react';
 import { Api } from 'services/Api';
 import List from 'components/List/List';
 import MovieItemForId from 'components/MovieItemForId/MovieItemForId';
+import { toast } from 'react-toastify';
 
 export default function TrendingMovies() {
   const [movies, setMovies] = useState(() => []);
-  // const [error, setError] = useState(null);
-  // const [isLoading, setIsLoading] = useState(false)
-  // const [visible, setVisible] = useState(true)
 
   useEffect(() => {
     Api()
       .then(({ data: { results } }) => {
         setMovies(results);
       })
-      .catch(error => console.log(error.request))
-      .finally();
+      .catch(error => toast.error(`${error}!`));
   }, []);
 
   return (

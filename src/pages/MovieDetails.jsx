@@ -4,6 +4,7 @@ import { Suspense, useEffect, useRef, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { apiMov } from 'services/Api';
 import { CirclesWithBar } from 'react-loader-spinner';
+import { toast } from 'react-toastify';
 
 export default function Movie() {
   const URL_IMG = 'https://image.tmdb.org/t/p/w200';
@@ -25,8 +26,7 @@ export default function Movie() {
   useEffect(() => {
     apiMov(movId)
       .then(({ data }) => setMovie(data))
-      .catch(console.log)
-      .finally();
+      .catch(error => toast.error(`${error}!`));
   }, [movId]);
 
   return (
@@ -67,12 +67,13 @@ export default function Movie() {
             height="100"
             width="100"
             color="#4fa94d"
-            wrapperStyle={{}}
-            wrapperClass=""
+            wrapperStyle={{
+              justifyContent: 'center',
+            }}
             visible={true}
-            outerCircleColor=""
-            innerCircleColor=""
-            barColor=""
+            outerCircleColor="#0000ff"
+            innerCircleColor="#ff0048"
+            barColor="#0000ff"
             ariaLabel="circles-with-bar-loading"
           />
         }

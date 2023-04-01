@@ -1,7 +1,4 @@
-/* @import-normalize; */
 @import './../node_modules/modern-normalize/modern-normalize.css';
-/* bring in normalize.css styles */
-
 
 body {
   margin: 0;
@@ -10,6 +7,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
 }
 
 code {
@@ -19,7 +20,22 @@ code {
 
 a {
   text-decoration: none;
+}
 
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+li {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
 }
 
 .active {

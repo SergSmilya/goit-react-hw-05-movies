@@ -1,6 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy } from 'react';
 import SharedLayout from './SharedLayout/SharedLayout';
+import React from 'react';
+import { ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 const Home = lazy(() => import('../pages/Home'));
 const Movies = lazy(() => import('../pages/Movies'));
@@ -11,14 +15,14 @@ const Reviews = lazy(() => import('../components/Reviews/Reviews'));
 export const App = () => {
   return (
     <div
-      style={{
-        height: '100%',
-        display: 'block',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 20,
-        color: '#010101',
-      }}
+    // style={{
+    //   height: '100%',
+    //   display: 'block',
+    //   justifyContent: 'center',
+    //   alignItems: 'center',
+    //   fontSize: 20,
+    //   color: '#010101',
+    // }}
     >
       <Routes>
         <Route path="/" element={<SharedLayout />}>
@@ -31,8 +35,8 @@ export const App = () => {
           <Route path="*" element={<Home />} />
         </Route>
       </Routes>
+
+      <ToastContainer autoClose={3000} />
     </div>
   );
 };
-
-// Додати обробку помилок до компонентів та спінери, а також додати додаткові перевірки
