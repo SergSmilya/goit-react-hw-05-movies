@@ -1,5 +1,5 @@
-import Button from 'components/Button/Button';
 import { useState } from 'react';
+import Button from 'components/Button/Button';
 import PropTypes from 'prop-types';
 
 export default function InputSearch({ handleWriteQueryInput }) {
@@ -17,9 +17,12 @@ export default function InputSearch({ handleWriteQueryInput }) {
   }
 
   return (
-    <form onSubmit={handleSabmit}>
-      <label>
-        Search
+    <form
+      onSubmit={handleSabmit}
+      style={{ display: 'flex', justifyContent: 'center' }}
+    >
+      <label style={{ fontStyle: 'italic' }}>
+        Search{' '}
         <input
           type="search"
           name="search"

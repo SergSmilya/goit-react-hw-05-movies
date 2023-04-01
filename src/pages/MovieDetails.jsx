@@ -1,7 +1,7 @@
-import Additional from 'components/Additional/Additional';
-import List from 'components/List/List';
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import Additional from 'components/Additional/Additional';
+import List from 'components/List/List';
 import { apiMov } from 'services/Api';
 import { CirclesWithBar } from 'react-loader-spinner';
 import { toast } from 'react-toastify';
@@ -30,8 +30,13 @@ export default function Movie() {
   }, [movId]);
 
   return (
-    <div>
-      <Link to={backLocation.current}>Go Back</Link>
+    <div style={{ display: 'flex' }}>
+      <Link
+        style={{ marginBottom: 8, display: 'inline-block' }}
+        to={backLocation.current}
+      >
+        Go Back
+      </Link>
 
       {/* Розбити на компоненти */}
       {movie.genres && (
@@ -43,14 +48,23 @@ export default function Movie() {
           </h2>
 
           <p>
-            User Score
-            <span> {vote_average.toFixed(1) * 10}%</span>
+            User Score:{' '}
+            <span
+              style={{
+                color: 'blue',
+                fontSize: 'large',
+                fontWeight: 'bold',
+                fontStyle: 'italic',
+              }}
+            >
+              {vote_average.toFixed(1) * 10}%
+            </span>
           </p>
 
-          <p>Overview</p>
+          <p style={{ fontSize: 'large', fontWeight: 'bold' }}>Overview</p>
           <p>{overview}</p>
 
-          <p>Genres</p>
+          <p style={{ fontSize: 'large', fontWeight: 'bold' }}>Genres</p>
           <List>
             {genres.map(({ id, name }) => (
               <li key={id} id={id}>
