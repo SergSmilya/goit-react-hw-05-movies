@@ -13,7 +13,7 @@ export default function Reviews() {
 
   return (
     <div>
-      {reviews.length > 0 && (
+      {reviews.length > 0 ? (
         <List>
           {reviews.map(({ id, author, content, url }) => (
             //    зробити окремий комронент
@@ -24,6 +24,10 @@ export default function Reviews() {
             </li>
           ))}
         </List>
+      ) : (
+        <div>
+          <p>There is no description</p>
+        </div>
       )}
     </div>
   );

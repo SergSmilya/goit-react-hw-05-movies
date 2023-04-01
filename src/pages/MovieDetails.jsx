@@ -3,6 +3,7 @@ import List from 'components/List/List';
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { apiMov } from 'services/Api';
+import { CirclesWithBar } from 'react-loader-spinner';
 
 export default function Movie() {
   const URL_IMG = 'https://image.tmdb.org/t/p/w200';
@@ -60,8 +61,23 @@ export default function Movie() {
         </div>
       )}
 
-      <Additional>Additional information</Additional>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={
+          <CirclesWithBar
+            height="100"
+            width="100"
+            color="#4fa94d"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+            outerCircleColor=""
+            innerCircleColor=""
+            barColor=""
+            ariaLabel="circles-with-bar-loading"
+          />
+        }
+      >
+        <Additional>Additional information</Additional>
         <Outlet />
       </Suspense>
     </div>
